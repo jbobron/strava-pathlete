@@ -12,8 +12,6 @@
   },
   "dependencies": {
     "express": "4.13.3",
-    "passport": "^0.3.2",
-    "passport-strava-oauth2": "2.15.9",
     "request": "^2.75.0"
   },
   "author": "",
