@@ -11,12 +11,22 @@
     "url": "git+https://github.com/jbobron/strava-pathlete.git"
   },
   "dependencies": {
-    "express": "4.13.3"
+    "express": "4.13.3",
+    "passport": "^0.3.2",
+    "passport-strava-oauth2": "2.15.9",
+    "request": "^2.75.0"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jbobron/strava-pathlete/issues"
   },
-  "homepage": "https://github.com/jbobron/strava-pathlete#readme"
+  "homepage": "https://github.com/jbobron/strava-pathlete#readme",
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1"
+  }
 }
