@@ -9,6 +9,18 @@ const bodyParser = require('body-parser');
 const STRAVA_CLIENT_ID = process.env.STRAVA_CLIENT_ID;
 const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET;
 
+const app = express();
+
+// configure Express
+const cbUrl = '';
+if (app.get('env') === 'development') {
+  console.log("DEVELOPMENT !!!!")
+  var use = app.use(express.errorHandler());
+  cbUrl = 'http://localhost:3000';
+} else {
+  console.log("NOT>>>>>>>DEVELOPMENT !!!!");
+  cbUrl = 'http://strava-pathlete.herokuapp.com';
+}
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -29,7 +41,7 @@ passport.deserializeUser((obj, done) => done(null, obj));
 passport.use(new StravaStrategy({
   clientID: STRAVA_CLIENT_ID,
   clientSecret: STRAVA_CLIENT_SECRET,
-  callbackURL: 'http://strava-pathlete.herokuapp.com/auth/strava/callback',
+  callbackURL: cbUrl + '/auth/strava/callback',
 },
   (accessToken, refreshToken, profile, done) => {
     // asynchronous verification, for effect...
@@ -45,29 +57,22 @@ passport.use(new StravaStrategy({
   }
 ));
 
-const app = express();
 
-// configure Express
-
-if ('development' == app.get('env')){
-  var use=app.use(express.errorHandler());
-}
-
-app.configure(() => {
-  app.set('views', __dirname + '/public');
-  app.set('view engine', 'ejs');
-  app.use(express.logger());
-  app.use(express.cookieParser());
-  app.use(bodyParser.json());
-  app.use(methodOverride());
-  app.use(express.session({ secret: 'keyboard cat' }));
-  // Initialize Passport!  Also use passport.session() middleware, to support
-  // persistent login sessions (recommended).
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
-});
+// app.configure(() => {
+app.set('views', __dirname + '/public');
+app.set('view engine', 'ejs');
+app.use(express.logger());
+app.use(express.cookieParser());
+app.use(bodyParser.json());
+app.use(methodOverride());
+app.use(express.session({ secret: 'keyboard cat' }));
+// Initialize Passport!  Also use passport.session() middleware, to support
+// persistent login sessions (recommended).
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(app.router);
+app.use(express.static(__dirname + '/public'));
+// });
 
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If

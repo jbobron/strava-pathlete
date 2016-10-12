@@ -2,7 +2,7 @@ TODOS:
 
 -isolate and use passport for authentication to simplify/clean server code
 -wireframe
--
+-upgrade to newer version of express and debug bc passport-strava docs uses old version
 
 
 
@@ -13,7 +13,7 @@ features:
    is complete
 
 - dashboard
-  
+
   -show calories burned (maybe last 3 days?) to show you how much of a calorie defecit you
    are in and how much you need to eat
   -recovery time: show training load and recovery status (red, yellow, green)
