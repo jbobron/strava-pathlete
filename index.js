@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-const keys = require('./key');
+// const keys = require('./key');
 const request = require('request');
 
-const STRAVA_CLIENT_ID = keys.STRAVA_CLIENT_ID;
-const STRAVA_CLIENT_SECRET = keys.STRAVA_CLIENT_SECRET;
+const STRAVA_CLIENT_ID = !process.env.STRAVA_CLIENT_ID ? require('./key').STRAVA_CLIENT_ID;
+// const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET;
 
 
 app.set('port', (process.env.PORT || 5000));
@@ -36,7 +36,6 @@ app.get('/auth/strava', (req, res) => {
 app.get('/token_exchange', (req, res) => {
   const authCode = req.param('code');
   console.log("here in token exchange!", req, "is this your auth code->", req.params.code)
-  // res.send('https://www.strava.com/oauth/token' + clientId + clientSecret + '&code=' + authCode)
   const postUrl = 'https://www.strava.com/oauth/token' + clientId + clientSecret + '&code=' + authCode;
   request.post(postUrl, (error, response, body) => {
       if (!error && response.statusCode == 200) {
