@@ -15,7 +15,10 @@
     "url": "git+https://github.com/jbobron/strava-pathlete.git"
   },
   "dependencies": {
-    "express": "4.13.3",
+    "passport-oauth": "0.1.x",
+    "passport-strava-oauth2": ">= 0.1.1",
+    "ejs": ">= 0.0.0",
+    "express": "3.x",
     "foreman": "^2.0.0",
     "request": "^2.75.0"
   },

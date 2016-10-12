@@ -2,4 +2,5 @@ node_modules
 sandbox
 .eslintrc.js
 key.js
+sample_strava_response.js
 .env

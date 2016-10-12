@@ -1,0 +1,29 @@
+TODOS:
+
+-isolate and use passport for authentication to simplify/clean server code
+-wireframe
+-
+
+
+
+features:
+- pathlete type goals (run across america, climb everest, bike around the world)
+  -have a wide list of goals for all levels of users, show users previous goal completed,
+   current goal, and mysterious question mark next goal that can be unlocked if current goal
+   is complete
+
+- dashboard
+  
+  -show calories burned (maybe last 3 days?) to show you how much of a calorie defecit you
+   are in and how much you need to eat
+  -recovery time: show training load and recovery status (red, yellow, green)
+    -determine avg. training load per week (math like comparing trend in stock 52 week avg vs current price )
+
+
+
+
+
+Questions:
+-database? mongo/mongoose?
+  -how do you take dev/local db live?
+-how do react components get data from express server?

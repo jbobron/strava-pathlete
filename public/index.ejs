@@ -1,0 +1,10 @@
+<% if (!user) { %>
+	<h2>Welcome! Please log in.</h2>
+<% } else { %>
+	<h2>Hello, <%= user.displayName %>.</h2>
+	<ul>
+	<% for(var key in user) {%>
+	   <li><%= user[key] %></li>
+	<% } %>
+	</ul>
+<% } %>
