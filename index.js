@@ -12,7 +12,7 @@ const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET;
 const app = express();
 
 // configure Express
-const cbUrl = '';
+var cbUrl = '';
 if (app.get('env') === 'development') {
   console.log("DEVELOPMENT !!!!")
   var use = app.use(express.errorHandler());
