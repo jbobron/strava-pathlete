@@ -5,7 +5,6 @@ const StravaStrategy = require('passport-strava-oauth2').Strategy;
 const util = require('util');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
-
 const STRAVA_CLIENT_ID = process.env.STRAVA_CLIENT_ID;
 const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET;
 
@@ -17,11 +16,10 @@ if (app.get('env') === 'development') {
   // var use = app.use(express.errorHandler());
   cbUrl = 'http://127.0.0.1:3000/auth/strava/callback';
   // DEV NEEDS THIS
-  app.use(express.session({ secret: 'keyboard cat' }));
 } else {
   cbUrl = 'http://strava-pathlete.herokuapp.com/auth/strava/callback';
 }
-
+app.use(express.session({ secret: 'keyboard cat', cookie: { maxAge: 1000 * 60 * 60 } }));
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session.  Typically,
@@ -126,4 +124,8 @@ app.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-app.listen(process.env.PORT || 3000);
+if (app.get('env') === 'development') {
+  app.listen(3000);
+} else {
+  app.listen(process.env.PORT);
+}
