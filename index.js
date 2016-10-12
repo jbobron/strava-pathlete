@@ -3,9 +3,10 @@ const app = express();
 // const keys = require('./key');
 const request = require('request');
 
-const STRAVA_CLIENT_ID = !!process.env.STRAVA_CLIENT_ID ? process.env.STRAVA_CLIENT_ID : require('./key').STRAVA_CLIENT_ID
-const STRAVA_CLIENT_SECRET = !!process.env.STRAVA_CLIENT_SECRET ? process.env.STRAVA_CLIENT_SECRET : require('./key').STRAVA_CLIENT_SECRET
-// const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET;
+// const STRAVA_CLIENT_ID = !!process.env.STRAVA_CLIENT_ID ? process.env.STRAVA_CLIENT_ID : require('./key').STRAVA_CLIENT_ID
+// const STRAVA_CLIENT_SECRET = !!process.env.STRAVA_CLIENT_SECRET ? process.env.STRAVA_CLIENT_SECRET : require('./key').STRAVA_CLIENT_SECRET
+const STRAVA_CLIENT_ID = process.env.STRAVA_CLIENT_ID;
+const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET;
 
 
 app.set('port', (process.env.PORT || 5000));
