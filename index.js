@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 
 function getRedirectURL() {
   if (app.get('port') !== 5000) {
-    return 'http://strava-pathlete.herokuapp.com';
+    return 'http://strava-pathlete.herokuapp.com/token_exchange';
   }
   return 'http://localhost:5000/token_exchange';
 }
