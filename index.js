@@ -27,7 +27,7 @@ passport.deserializeUser((obj, done) => done(null, obj));
 passport.use(new StravaStrategy({
   clientID: STRAVA_CLIENT_ID,
   clientSecret: STRAVA_CLIENT_SECRET,
-  callbackURL: 'http://127.0.0.1:3000/auth/strava/callback',
+  callbackURL: 'http://strava-pathlete.herokuapp.com/auth/strava/callback',
 },
   (accessToken, refreshToken, profile, done) => {
     // asynchronous verification, for effect...
@@ -44,8 +44,6 @@ passport.use(new StravaStrategy({
 ));
 
 const app = express();
-// const app = http.createServer(exp);
-// const app = express.createServer();
 
 // configure Express
 app.configure(() => {
