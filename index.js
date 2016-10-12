@@ -14,12 +14,10 @@ const app = express();
 // configure Express
 var cbUrl = '';
 if (app.get('env') === 'development') {
-  console.log("DEVELOPMENT !!!!")
-  var use = app.use(express.errorHandler());
-  cbUrl = 'http://localhost:3000';
+  // var use = app.use(express.errorHandler());
+  cbUrl = 'http://localhost:3000/auth/strava/callback';
 } else {
-  console.log("NOT>>>>>>>DEVELOPMENT !!!!");
-  cbUrl = 'http://strava-pathlete.herokuapp.com';
+  cbUrl = 'http://strava-pathlete.herokuapp.com/auth/strava/callback';
 }
 
 // Passport session setup.
@@ -41,7 +39,7 @@ passport.deserializeUser((obj, done) => done(null, obj));
 passport.use(new StravaStrategy({
   clientID: STRAVA_CLIENT_ID,
   clientSecret: STRAVA_CLIENT_SECRET,
-  callbackURL: cbUrl + '/auth/strava/callback',
+  callbackURL: cbUrl,
 },
   (accessToken, refreshToken, profile, done) => {
     // asynchronous verification, for effect...
@@ -65,7 +63,10 @@ app.use(express.logger());
 app.use(express.cookieParser());
 app.use(bodyParser.json());
 app.use(methodOverride());
+
+// below causes memory leak on heroku prod, use connect-mongo or cookie-Session
 // app.use(express.session({ secret: 'keyboard cat' }));
+
 // Initialize Passport!  Also use passport.session() middleware, to support
 // persistent login sessions (recommended).
 app.use(passport.initialize());
