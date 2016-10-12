@@ -3,6 +3,8 @@ const passport = require('passport');
 const http = require('http');
 const StravaStrategy = require('passport-strava-oauth2').Strategy;
 const util = require('util');
+const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
 
 const STRAVA_CLIENT_ID = process.env.STRAVA_CLIENT_ID;
 const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET;
@@ -46,13 +48,18 @@ passport.use(new StravaStrategy({
 const app = express();
 
 // configure Express
+
+if ('development' == app.get('env')){
+  var use=app.use(express.errorHandler());
+}
+
 app.configure(() => {
   app.set('views', __dirname + '/public');
   app.set('view engine', 'ejs');
   app.use(express.logger());
   app.use(express.cookieParser());
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
+  app.use(bodyParser.json());
+  app.use(methodOverride());
   app.use(express.session({ secret: 'keyboard cat' }));
   // Initialize Passport!  Also use passport.session() middleware, to support
   // persistent login sessions (recommended).
