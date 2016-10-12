@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "passport": ">= 0.0.0",
     "ejs": ">= 0.0.0",
     "express": "3.x",
     "foreman": "^2.0.0",
