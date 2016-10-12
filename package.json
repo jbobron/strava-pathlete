@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"foreman start -f Procfile",
+    "start": "foreman start -f Procfile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "express": "4.13.3",
+    "foreman": "^2.0.0",
     "request": "^2.75.0"
   },
   "author": "",
