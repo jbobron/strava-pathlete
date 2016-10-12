@@ -15,7 +15,9 @@ const app = express();
 var cbUrl = '';
 if (app.get('env') === 'development') {
   // var use = app.use(express.errorHandler());
-  cbUrl = 'http://localhost:3000/auth/strava/callback';
+  cbUrl = 'http://127.0.0.1:3000/auth/strava/callback';
+  // DEV NEEDS THIS
+  app.use(express.session({ secret: 'keyboard cat' }));
 } else {
   cbUrl = 'http://strava-pathlete.herokuapp.com/auth/strava/callback';
 }
@@ -65,7 +67,7 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 
 // below causes memory leak on heroku prod, use connect-mongo or cookie-Session
-// app.use(express.session({ secret: 'keyboard cat' }));
+
 
 // Initialize Passport!  Also use passport.session() middleware, to support
 // persistent login sessions (recommended).
