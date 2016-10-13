@@ -16,13 +16,14 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
-    "passport": ">= 0.0.0",
     "ejs": ">= 0.0.0",
     "express": "3.x",
     "foreman": "^2.0.0",
     "method-override": "^2.3.6",
+    "passport": ">= 0.0.0",
     "passport-oauth": "0.1.x",
     "passport-strava-oauth2": ">= 0.1.1",
+    "path": "^0.12.7",
     "request": "^2.75.0"
   },
   "author": "",
