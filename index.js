@@ -68,8 +68,8 @@ app.get('/account', ensureAuthenticated, (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  // res.render('login', { user: req.user });
-  res.redirect('auth/strava');
+  res.render('login', { user: req.user });
+  // res.redirect('auth/strava');
 });
 
 // passport.authenticate() authenticates the request w/ strava by redirecting
