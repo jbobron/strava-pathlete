@@ -9,7 +9,7 @@ const STRAVA_CLIENT_ID = process.env.STRAVA_CLIENT_ID;
 const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET;
 
 
-app.set('port', (process.env.PORT || 5000));
+// app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
