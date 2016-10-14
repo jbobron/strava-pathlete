@@ -13,10 +13,9 @@ function ensureAuthenticated(req, res, next) {
   return null;
 }
 
-module.exports = function() {
+module.exports = () => {
   router.get('/', (req, res) => {
-    console.log("REQ user ", req.user,"REQ all", req);
-    res.render('index', { user: req.user });
+    res.render('index', { user: JSON.stringify(req.user) });
   });
 
   router.get('/account', ensureAuthenticated, (req, res) => {
@@ -31,7 +30,7 @@ module.exports = function() {
   // this request to strava, authorizing user, and then strava redirects back
   // to /auth/strava/callback at the Authorization Callback Domain set in Strava API settings
   router.get('/auth/strava',
-    passport.authenticate('strava', { scope: ['public'] }));
+    passport.authenticate('strava', { scope: ['view_private'] }));
 
   router.get('/auth/strava/callback',
     passport.authenticate('strava', { failureRedirect: '/login' }), (req, res) => {

@@ -3,9 +3,10 @@
 	<a href="/auth/strava">Login with Strava</a>
 <% } else { %>
 	<h2>Hello, <%= user.displayName %>.</h2>
-	<ul>
+	<!-- <ul>
 	<% for(var key in user) {%>
 	   <li><%= user[key] %></li>
 	<% } %>
-	</ul>
+	</ul> -->
+	<%= user %>
 <% } %>
